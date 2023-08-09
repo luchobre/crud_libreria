@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libreria LB</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="navbar-container">
+      <a href="/"><h1 class="navbar-title">LIBRERIA LB</h1></a>
+    </div>
+    <div class="content-container">
+      <nav class="sidebar-container">
+        <ul class="list-container">
+          <a href="/socios"><li>Socios</li></a>
+          <a href="/libros"><li>Libros</li></a>
+          <a href="/prestamos"><li>Prestamos</li></a>
+        </ul>
+        <div class="actions">
+          <!-- Botón para abrir el modal -->
+          <button id="abrirModal">Agregar Prestamo +</button>
+        </div>
+      </nav>
+      <div class="data-container2">
+        <!-- TABLA DE prestamos -->
+        <table class="table-container2">
+          <tr>
+            <th>Id</th>
+            <th>Id Libro </th>
+            <th>Libro </th>
+            <th>Id Socio</th>
+            <th>Nombre Socio</th>
+            <th>Fecha de retiro</th>
+            <th>Fecha de entrega</th>
+            <th></th>
+          </tr>
+          <!-- Filas de datos de prestamos -->
+          <% for(var i=0; i< prestamos.length;i++) { %>
+            <tr>
+              <td><%= prestamos[i].id_prestamo %></td>
+              <td><%= prestamos[i].id_libro %></td>
+              <td><%= prestamos[i].titulo %></td>
+              <td><%= prestamos[i].id_socio %></td>
+              <td>
+                <%= prestamos[i].nombre %>
+                <%= prestamos[i].apellido %>
+              </td>
+              <td><%= prestamos[i].fecha_retiro.toLocaleDateString() %></td>
+              <td><%= prestamos[i].fecha_entrega.toLocaleDateString() %></td>
+              <td>
+                <a class="button-edit" href="/editar_prestamo/<%= prestamos[i].id_prestamo %>">Editar</a>
+                <a class="button-erase" href="/borrar_prestamo/<%= prestamos[i].id_prestamo %>">Devuelto</a>
+              </td>
+            </tr>
+            <% } %> 
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div id="miModal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar">&times;</span>
+      <h2>Agregar Prestamo</h2>
+      <!-- Formulario para cargar un socio -->
+      <form action="/prestamos" method="post" id="formularioSocio">
+        <!-- Campos del formulario -->
+        <input type="number" name="id_libro" placeholder="Id de libro">
+        <input type="number" name="id_socio" placeholder="Id de socio">
+        <input type="date" name="fecha_retiro" placeholder="Fecha de retiro">
+        <input type="date" name="fecha_entrega" placeholder="Fecha de entrega">
+        <!-- Otros campos -->
+        <button type="submit">Agregar</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>

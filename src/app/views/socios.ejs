@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libreria LB</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="navbar-container">
+      <a href="/"><h1 class="navbar-title">LIBRERIA LB</h1></a>
+    </div>
+    <div class="content-container">
+      <nav class="sidebar-container">
+        <ul class="list-container">
+          <a href="/socios"><li>Socios</li></a>
+          <a href="/libros"><li>Libros</li></a>
+          <a href="/prestamos"><li>Prestamos</li></a>
+        </ul>
+        <div class="actions">
+          <!-- Botón para abrir el modal -->
+          <button id="abrirModal">Agregar Socio +</button>
+        </div>
+      </nav>
+      <div class="data-container">
+        <!-- TABLA DE SOCIOS -->
+        <table class="table-container">
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Fecha de nacimiento</th>
+            <th>Dni</th>
+            <th>Dirección</th>
+            <th>Telefono</th>
+            <th>Email</th>
+            <th>Fecha de alta</th>
+            <th></th>
+          </tr>
+          <!-- Filas de datos de socios -->
+          <% for(var i=0; i< socios.length;i++) { %>
+            <tr>
+              <td><%= socios[i].id_socio %></td>
+              <td><%= socios[i].nombre %></td>
+              <td><%= socios[i].apellido %></td>
+              <td><%= socios[i].fecha_nac.toLocaleDateString() %></td>
+              <td><%= socios[i].dni %></td>
+              <td><%= socios[i].direccion %></td>
+              <td><%= socios[i].telefono %></td>
+              <td><%= socios[i].email %></td>
+              <td><%= socios[i].fecha_alta.toLocaleDateString() %></td>
+              <td>
+                <a class="button-edit" href="/editar_socio/<%= socios[i].id_socio %>">Editar</a>
+                <a class="button-erase" href="/borrar_socio/<%= socios[i].id_socio %>">Borrar</a>
+              </td>
+            </tr>
+            <% } %>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div id="miModal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar">&times;</span>
+      <h2>Agregar Socio</h2>
+      <!-- Formulario para cargar un socio -->
+      <form action="/socios" method="post" id="formularioSocio">
+        <!-- Campos del formulario -->
+        <input type="text" name="nombre" placeholder="Nombre">
+        <input type="text" name="apellido" placeholder="Apellido">
+        <input type="date" name="fecha_nac" placeholder="Fecha de nacimiento">
+        <input type="text" name="dni" placeholder="DNI">
+        <input type="text" name="direccion" placeholder="Direccion">
+        <input type="text" name="telefono" placeholder="Telefono">
+        <input type="text" name="email" placeholder="Email">
+        <input type="date" name="fecha_alta" placeholder="Fecha de alta">
+        <!-- Otros campos -->
+        <button type="submit">Agregar</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>

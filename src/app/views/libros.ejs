@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libreria LB</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="navbar-container">
+      <a href="/"><h1 class="navbar-title">LIBRERIA LB</h1></a>
+    </div>
+    <div class="content-container">
+      <nav class="sidebar-container">
+        <ul class="list-container">
+          <a href="/socios"><li>Socios</li></a>
+          <a href="/libros"><li>Libros</li></a>
+          <a href="/prestamos"><li>Prestamos</li></a>
+        </ul>
+        <div class="actions">
+          <!-- Botón para abrir el modal -->
+          <button id="abrirModal">Agregar Libro +</button>
+        </div>
+      </nav>
+      <div class="data-container1">
+        <!-- TABLA DE libros -->
+        <table class="table-container1">
+          <tr>
+            <th>Id</th>
+            <th>ISBN</th>
+            <th>Titulo</th>
+            <th>Reseña</th>
+            <th>Autor</th>
+            <th>Editorial</th>
+            <th>Año</th>
+            <th></th>
+          </tr>
+          <!-- Filas de datos de libros -->
+          <% for(var i=0; i< libros.length;i++) { %>
+            <tr>
+              <td><%= libros[i].id_libro %></td>
+              <td><%= libros[i].isbn %></td>
+              <td><%= libros[i].titulo %></td>
+              <td><%= libros[i].reseña %></td>
+              <td><%= libros[i].autor %></td>
+              <td><%= libros[i].editorial %></td>
+              <td><%= libros[i].anio %></td>
+              <td>
+                <a class="button-edit" href="/editar_libro/<%= libros[i].id_libro %>">Editar</a>
+                <a class="button-erase" href="/borrar_libro/<%= libros[i].id_libro %>">Borrar</a>
+              </td>
+            </tr>
+            <% } %>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div id="miModal" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar">&times;</span>
+      <h2>Agregar Libro</h2>
+      <!-- Formulario para cargar un socio -->
+      <form action="/libros" method="post" id="formularioSocio">
+        <!-- Campos del formulario -->
+        <input type="text" name="isbn" placeholder="ISBN">
+        <input type="text" name="titulo" placeholder="Titulo">
+        <input type="text" name="reseña" placeholder="Reseña">
+        <input type="text" name="autor" placeholder="Autor">
+        <input type="text" name="editorial" placeholder="Editorial">
+        <input type="number" name="anio" placeholder="Año">
+        <!-- Otros campos -->
+        <button type="submit">Agregar</button>
+      </form>
+    </div>
+  </div>
+  
+  <script src="/js/script.js"></script>
+</body>
+</html>

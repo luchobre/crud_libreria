@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libreria LB</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="navbar-container">
+      <a href="/"><h1 class="navbar-title">LIBRERIA LB</h1></a>
+    </div>
+    <div class="content-container">
+      <nav class="sidebar-container">
+        <ul class="list-container">
+          <a href="/socios"><li>Socios</li></a>
+          <a href="/libros"><li>Libros</li></a>
+          <a href="/prestamos"><li>Prestamos</li></a>
+        </ul>
+      </nav>
+      <div class="data-container">
+        <h2>Editar Prestamo</h2>
+        <form action="/editar_prestamo/<%= prestamo.id_prestamo %>" method="post" id="formularioSocio" class="form-container">
+          <!-- Campos del formulario -->
+          <label for="id_libro">ID libro: </label>
+          <input type="number" id="id_libro" name="id_libro" value=" <%= prestamo.id_libro %>">
+
+          <label for="id_socio">ID Socio: </label>
+          <input type="number" id="id_socio" name="id_socio" value=" <%= prestamo.id_socio %>">
+
+          <label for="fecha_retiro">Fecha de retiro: </label>
+          <input type="date" id="fecha_retiro" name="fecha_retiro" value=" <%= prestamo.fecha_retiro %>">
+
+          <label for="fecha_entrega">Fecha de entrega: </label>
+          <input type="date" id="fecha_entrega" name="fecha_entrega" value=" <%= prestamo.fecha_entrega %>">
+          <!-- Otros campos -->
+          <button type="submit">Editar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

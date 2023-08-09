@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Libreria LB</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="container">
+    <div class="navbar-container">
+      <a href="/"><h1 class="navbar-title">LIBRERIA LB</h1></a>
+    </div>
+    <div class="content-container">
+      <nav class="sidebar-container">
+        <ul class="list-container">
+          <a href="/socios"><li>Socios</li></a>
+          <a href="/libros"><li>Libros</li></a>
+          <a href="/prestamos"><li>Prestamos</li></a>
+        </ul>
+      </nav>
+      <div class="data-container">
+        <h2>Editar Socio</h2>
+        <form action="/editar_socio/<%= socio.id_socio %>" method="post" id="formularioSocio" class="form-container" >
+          <!-- Campos del formulario -->
+          <label for="nombre">Nombre del socio: </label>
+          <input type="text" id="nombre" name="nombre" value=" <%= socio.nombre %>">
+
+          <label for="apellido">Apellido del socio: </label>
+          <input type="text" id="apellido" name="apellido" value=" <%= socio.apellido %>">
+
+          <label for="fecha_nac">Fecha de nacimiento: </label>
+          <input type="date" id="fecha_nac" name="fecha_nac" value=" <%= socio.fecha_nac %>">
+
+          <label for="dni">DNI: </label>
+          <input type="text" id="dni" name="dni" value=" <%= socio.dni %>">
+
+          <label for="direccion">Dirección: </label>
+          <input type="text" id="direccion" name="direccion" value=" <%= socio.direccion %>">
+
+          <label for="telefono">Telefono: </label>
+          <input type="text" id="telefono" name="telefono" value=" <%= socio.telefono %>">
+
+          <label for="email">Email: </label>
+          <input type="text" id="email" name="email" value=" <%= socio.email %>">
+
+          <label for="fecha_alta">Fecha de alta: </label>
+          <input type="date" id="fecha_alta" name="fecha_alta" value=" <%= socio.fecha_alta %>">
+          <!-- Otros campos -->
+          <button type="submit">Editar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
